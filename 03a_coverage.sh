@@ -1,13 +1,10 @@
-#!/bin/sh
-#$ -V
-#$ -cwd
-#$ -S /bin/bash
-#$ -N ca_depth
-#$ -q omni
-#$ -pe sm 2
-#$ -P quanah
-#$ -l h_rt=48:00:00
-#$ -l h_vmem=24G
+#!/bin/bash
+#SBATCH --chdir=./
+#SBATCH --job-name=ca_depth
+#SBATCH --partition quanah
+#SBATCH --nodes=1 --ntasks=3
+#SBATCH --time=48:00:00
+#SBATCH --mem-per-cpu=8G
 
 samtools depth -a Certhia_albescens_Chiapas_UWBM113447_final.bam Certhia_albescens_Chiapas_UWBM113461_final.bam \
 Certhia_albescens_Chiapas_UWBM113462_final.bam Certhia_albescens_CMexico_UWBM106936_final.bam Certhia_albescens_CMexico_UWBM107890_final.bam \
