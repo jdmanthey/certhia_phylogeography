@@ -24,3 +24,12 @@ vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --max-missing 0.8 --minQ 2
 
 # run vcftools with SNP output with no missing data, no thinning
 vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf --remove-indv Certhia_familiaris_outgroup_KU92846 --max-missing 1.0 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 50 --min-alleles 2 --max-alleles 2 --mac 1 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/17_ds5_lostruct/${input_array}
+
+# bgzip and tabix index files that will be subdivided into windows
+# directory 1
+bgzip ${workdir}/15_ds3_trees50kbp/${input_array}.recode.vcf
+# directory 2 while keeping original files
+bgzip -c ${workdir}/17_ds5_lostruct/${input_array}.recode.vcf > ${workdir}/17_ds5_lostruct/${input_array}.recode.vcf.gz
+#tabix
+tabix -p vcf ${workdir}/15_ds3_trees50kbp/${input_array}.recode.vcf.gz
+tabix -p vcf ${workdir}/17_ds5_lostruct/${input_array}.recode.vcf.gz
