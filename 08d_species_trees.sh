@@ -1,5 +1,3 @@
-# first, concatenate all the trees from raxml into a single file (certhia_50kbp.trees or certhia_100kbp.trees)
-
 # maximum clade credibility tree (simple summarization) from all gene trees using dendropy:
 # gives info about which nodes have support from what proportion of gene trees
 sumtrees.py --output=certhia_50kbp.tre --min-clade-freq=0.05 certhia_50kbp.trees 
