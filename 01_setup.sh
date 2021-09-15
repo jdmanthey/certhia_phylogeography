@@ -17,3 +17,5 @@ mkdir 18_ds6_stats50kbp
 mkdir 18_ds6_stats50kbp/windows
 mkdir 19_ds7_stats100kbp
 mkdir 19_ds7_stats100kbp/windows
+mkdir 20_treemix_50kbp
+mkdir 21_treemix_100kbp
