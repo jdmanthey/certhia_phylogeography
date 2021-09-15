@@ -9,10 +9,7 @@ for i in $( ls *recode.vcf ); do
 	echo $i;
 	
 	# get the first genotypes line from the file
-	grep -v "#" $i | head -n1 > temp.vcf
-
-	# replace any phased symbols
-	sed 's/|/\\/g' temp.vcf > temp2.vcf
+	grep -v "#" $i | head -n1 > temp2.vcf
 
 	# replace any non-reference alleles with the 0/0
 	sed 's/0\/1/0\/0/g' temp2.vcf > temp3.vcf
@@ -22,27 +19,24 @@ for i in $( ls *recode.vcf ); do
 	awk '{$2=1 ; OFS="\t"; print ;}' temp4.vcf > temp5.vcf
 
 	# add the header to the new file
-	grep "#" $i > temp6.vcf
+	grep "#" $i > ${i%recode.vcf}vcf
 
 	# add the single line to the new file
-	cat temp5.vcf >> temp6.vcf
+	cat temp5.vcf >> ${i%recode.vcf}vcf
 
 	# add the rest of the genotype information to the new file
-	grep -v "#" $i >> temp6.vcf
+	grep -v "#" $i >> ${i%recode.vcf}vcf
 
-	# remove any phasing data from the entire file
-	sed 's/|/\\/g' temp6.vcf > ${i%recode.vcf}vcf
-
-	# gzip the new file
-	gzip ${i%recode.vcf}vcf
+	# convert to bcf and index
+	bcftools convert -O b ${i%recode.vcf}vcf > ${i%recode.vcf}bcf
+	bcftools index ${i%recode.vcf}bcf
 
 	# remove temp files
-	rm temp.vcf
 	rm temp2.vcf
 	rm temp3.vcf
 	rm temp4.vcf
 	rm temp5.vcf
-	rm temp6.vcf
+	rm ${i%recode.vcf}vcf
 
 done
 
