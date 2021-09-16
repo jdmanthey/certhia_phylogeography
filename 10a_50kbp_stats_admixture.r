@@ -144,7 +144,7 @@
 	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.simple.vcf", sep=""), file=a.script, append=T)
 	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.ped", sep=""), file=a.script, append=T)
 	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.map", sep=""), file=a.script, append=T)
-	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.chrom_map.txt", sep=""), file=a.script, append=T)
+	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}_chrom_map.txt", sep=""), file=a.script, append=T)
 	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}__b.ped", sep=""), file=a.script, append=T)
 	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}__b.nosex", sep=""), file=a.script, append=T)
 	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}__b.map", sep=""), file=a.script, append=T)
