@@ -62,7 +62,7 @@
 	write(tree_helper3, file=paste(directory_name, "/tree_helper_end.txt", sep=""), ncolumns=1)
 
 	# write the array script
-	a.script <- paste(directory_name, "/phylo100kbp_array.sh", sep="")
+	a.script <- paste(directory_name, "/phylo50kbp_array.sh", sep="")
 	write("#!/bin/sh", file=a.script)
 	write("#SBATCH --chdir=./", file=a.script, append=T)
 	write(paste("#SBATCH --job-name=", "phylo", sep=""), file=a.script, append=T)
@@ -116,7 +116,12 @@
 	write(bcf_tools_command, file=a.script, append=T)
 	write("", file=a.script, append=T)
 	
-	# Rscript command
+	# Rscript command for stats
+	rscript_command <- paste("\tRscript calculate_windows.r ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.simple.vcf popmap_phylo.txt", sep="")
+	write(rscript_command, file=a.script, append=T)
+	write("", file=a.script, append=T)
+	
+	# Rscript command for fasta creation
 	rscript_command <- paste("\tRscript create_fasta.r ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.simple.vcf popmap_phylo.txt", sep="")
 	write(rscript_command, file=a.script, append=T)
 	write("", file=a.script, append=T)
