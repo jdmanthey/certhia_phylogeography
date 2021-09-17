@@ -110,16 +110,6 @@
 	tabix_command <- paste("\ttabix ", project_directory, "/${chrom_array}.recode.vcf.gz ${chrom_array}:${start_array}-${end_array} >> ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.recode.vcf", sep="")
 	write(tabix_command, file=a.script, append=T)
 	write("", file=a.script, append=T)
-	
-	# bcftools command
-	bcf_tools_command <- paste("\tbcftools query -f '%POS\\t%REF\\t%ALT[\\t%GT]\\n' ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.recode.vcf > ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.simple.vcf", sep="")
-	write(bcf_tools_command, file=a.script, append=T)
-	write("", file=a.script, append=T)
-	
-	# Rscript command
-	rscript_command <- paste("\tRscript calculate_windows.r ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.simple.vcf popmap_stats.txt", sep="")
-	write(rscript_command, file=a.script, append=T)
-	write("", file=a.script, append=T)
 
 	# ADMIXTURE commands
 	# make chromosome map
@@ -141,7 +131,6 @@
 		
 	# remove unnecessary files at end
 	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.recode.vcf", sep=""), file=a.script, append=T)
-	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.simple.vcf", sep=""), file=a.script, append=T)
 	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.ped", sep=""), file=a.script, append=T)
 	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.map", sep=""), file=a.script, append=T)
 	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}_chrom_map.txt", sep=""), file=a.script, append=T)
