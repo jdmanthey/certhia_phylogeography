@@ -116,7 +116,12 @@
 	write(bcf_tools_command, file=a.script, append=T)
 	write("", file=a.script, append=T)
 	
-	# Rscript command
+	# Rscript command for stats
+	rscript_command <- paste("\tRscript calculate_windows.r ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.simple.vcf popmap_phylo.txt", sep="")
+	write(rscript_command, file=a.script, append=T)
+	write("", file=a.script, append=T)
+	
+	# Rscript command for fasta creation
 	rscript_command <- paste("\tRscript create_fasta.r ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.simple.vcf popmap_phylo.txt", sep="")
 	write(rscript_command, file=a.script, append=T)
 	write("", file=a.script, append=T)
