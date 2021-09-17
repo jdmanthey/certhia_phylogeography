@@ -111,11 +111,6 @@
 	write(tabix_command, file=a.script, append=T)
 	write("", file=a.script, append=T)
 	
-	# bcftools command
-	bcf_tools_command <- paste("\tbcftools query -f '%POS\\t%REF\\t%ALT[\\t%GT]\\n' ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.recode.vcf > ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.simple.vcf", sep="")
-	write(bcf_tools_command, file=a.script, append=T)
-	write("", file=a.script, append=T)
-
 	# ADMIXTURE commands
 	# make chromosome map
 	admixture_commands <- paste0('\tgrep -v "#" ', project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.recode.vcf | cut -f 1 | uniq | awk '{print $0\"\\t\"$0}' > ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}_chrom_map.txt")
@@ -136,7 +131,6 @@
 		
 	# remove unnecessary files at end
 	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.recode.vcf", sep=""), file=a.script, append=T)
-	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.simple.vcf", sep=""), file=a.script, append=T)
 	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.ped", sep=""), file=a.script, append=T)
 	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}.map", sep=""), file=a.script, append=T)
 	write(paste("\trm ", project_directory, "/windows/${chrom_array}__${start_array}__${end_array}_chrom_map.txt", sep=""), file=a.script, append=T)
