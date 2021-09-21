@@ -62,7 +62,7 @@
 	write(stat_helper3, file=paste(directory_name, "/stat_helper_end.txt", sep=""), ncolumns=1)
 
 	# write the array script
-	a.script <- paste(directory_name, "/stat50kbp_array.sh", sep="")
+	a.script <- paste(directory_name, "/stat100kbp_array.sh", sep="")
 	write("#!/bin/sh", file=a.script)
 	write("#SBATCH --chdir=./", file=a.script, append=T)
 	write(paste("#SBATCH --job-name=", "stat", sep=""), file=a.script, append=T)
