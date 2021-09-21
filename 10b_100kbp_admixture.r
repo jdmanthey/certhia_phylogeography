@@ -1,5 +1,5 @@
 	options(scipen=999)
-	project_directory <- "/lustre/scratch/jmanthey/01b_certhia_genomics2/18_ds6_stats100kbp"
+	project_directory <- "/lustre/scratch/jmanthey/01b_certhia_genomics2/19_ds7_stats100kbp"
 	directory_name <- "stat_100kbp"
 	cluster <- "quanah"
 	max_number_jobs <- 200
