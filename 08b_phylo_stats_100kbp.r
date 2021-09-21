@@ -62,7 +62,7 @@
 	write(tree_helper3, file=paste(directory_name, "/tree_helper_end.txt", sep=""), ncolumns=1)
 
 	# write the array script
-	a.script <- paste(directory_name, "/phylo50kbp_array.sh", sep="")
+	a.script <- paste(directory_name, "/phylo100kbp_array.sh", sep="")
 	write("#!/bin/sh", file=a.script)
 	write("#SBATCH --chdir=./", file=a.script, append=T)
 	write(paste("#SBATCH --job-name=", "phylo", sep=""), file=a.script, append=T)
