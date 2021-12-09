@@ -16,8 +16,8 @@ Steps to analyze resequencing data for Certhia americana samples from 7 populati
     06_filter_vcf.sh -> filter the whole-chromosome vcf files for downstream analyses
     07_whole_genome_admixture.sh -> run whole-genome admixture analyses with thinned SNP datasets
     08a_phylo_stats_50kbp.r + 08b_phylo_stats_100kbp.r -> R scripts to build SLURM array jobs to estimate phylogenies and popgen summary statistics in sliding windows
-                    ->subsequent phylogeny functions in SLURM jobs need the create_fasta_from_vcf.r and create_fasta.r R scripts
-                    ->subsequent popgen functions in SLURM jobs need the calculate_windows.r and window_stat_calculations.r R scripts
+                    -> subsequent phylogeny functions in SLURM jobs need the create_fasta_from_vcf.r and create_fasta.r R scripts
+                    -> subsequent popgen functions in SLURM jobs need the calculate_windows.r and window_stat_calculations.r R scripts
     08c_combine_trees.r -> combine all raxml output .tre files into a single .trees file
     08d_count_sites_in_tree_files.sh -> count invariable and variable sites per vcf
     08d_species_trees.sh -> estimate species trees from gene trees
