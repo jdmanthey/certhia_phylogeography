@@ -11,6 +11,7 @@ Steps to analyze resequencing data for Certhia americana samples from 7 populati
     03a_coverage.sh -> uses samtools to measure alignment coverage from bam files
     03b_plot_coverage.r -> uses R to plot the output from 03a_coverage.sh
     04_create_genotype_scripts.r -> R script that makes slurm array scripts and helper text files for genotyping in GATK
+                    -> requires popmap.txt and 06_certhia_reordered.fasta.fai files for job creation
     05_concatenate_vcf_files.sh + 05b_concatenate_vcf_files.sh -> combine all vcfs from the same chromosome into single vcf files
     06_filter_vcf.sh -> filter the whole-chromosome vcf files for downstream analyses
     07_whole_genome_admixture.sh -> run whole-genome admixture analyses with thinned SNP datasets
