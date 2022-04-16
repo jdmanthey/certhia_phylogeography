@@ -21,7 +21,7 @@ grep "#" ${workdir}/03_vcf/${input_array}.g.vcf > ${workdir}/03_vcf/${input_arra
 grep -v "#" ${workdir}/03_vcf/${input_array}.g.vcf | grep -v "LowQual" | awk '$6 >= 20 || $6 ~ /^\./' | awk '$5 !~ /*/' >> ${workdir}/03_vcf/${input_array}.filtered.vcf
 
 # run vcftools with SNP output, only biallelic SNPs with max missing = 2 individuals and no outgroup 
-vcftools --vcf ${workdir}/03_vcf/${input_array}.filtered.vcf --remove-indv Certhia_familiaris_outgroup_KU92846 --minDP 6 --max-meanDP 50 --max-alleles 2 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/18_msmc/${input_array}
+vcftools --vcf ${workdir}/03_vcf/${input_array}.filtered.vcf --remove-indv Certhia_familiaris_outgroup_KU92846 --minDP 6 --max-meanDP 50 --max-missing 0.01 --max-alleles 2 --max-maf 0.49 --remove-indels --recode --recode-INFO-all --out ${workdir}/18_msmc/${input_array}
 
 # use bcftools to simplify the vcf files to reduce file size, complexity, and make them easier to work with 
 bcftools query -f '%POS\t%REF\t%ALT[\t%GT]\n' ${workdir}/18_msmc/${input_array}.recode.vcf > ${workdir}/18_msmc/${input_array}.simple.vcf
