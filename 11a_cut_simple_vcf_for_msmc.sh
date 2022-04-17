@@ -14,6 +14,6 @@ cut_array=$( head -n${SLURM_ARRAY_TASK_ID} cut_popmap.txt | tail -n1 | cut -f2 )
 for i in $( ls *simple.vcf ); do
 output_name=${output_array}__${i%.simple.vcf}.vcf
 
-cut $i -f1,${cut_array} > $output_name
+cut $i -f1,2,3,${cut_array} > $output_name
 
 done
